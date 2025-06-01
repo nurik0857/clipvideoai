@@ -1,3 +1,5 @@
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 function VideoUpload() {
     const handleDrop = (e) => {
         e.preventDefault();
@@ -185,4 +187,9 @@ function App() {
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />); 
+console.log('Google Client ID from env:', process.env.REACT_APP_GOOGLE_CLIENT_ID);
+root.render(
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+        <App />
+    </GoogleOAuthProvider>
+); 
