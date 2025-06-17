@@ -143,7 +143,7 @@ function Footer() {
             <div className="container footer-grid">
                 <div>
                     <h3>Contact Us</h3>
-                    <p>Email: support@videoeditor.com</p>
+                    <p>Email: support@clipvideoai.org</p>
                     <div className="social-links">
                         <a href="#"><i className="fab fa-twitter"></i></a>
                         <a href="#"><i className="fab fa-facebook"></i></a>
@@ -167,10 +167,10 @@ function App() {
             <div className="hero">
                 <div className="hero-content">
                     <h1 className="headline">
-                        Upload Your Video or Paste a Link to Get Professional Edits Instantly
+                        Transform Your Videos with AI-Powered Editing
                     </h1>
                     <p className="subheadline">
-                        Transform your videos with AI-powered editing tools. Fast, professional, and easy to use.
+                        Upload your video or paste a link to get professional edits instantly. Powered by advanced AI technology.
                     </p>
                     <button className="cta-button">
                         Get Started
