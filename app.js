@@ -145,16 +145,16 @@ function Footer() {
                     <h3>Contact Us</h3>
                     <p>Email: support@clipvideoai.org</p>
                     <div className="social-links">
-                        <a href="#"><i className="fab fa-twitter"></i></a>
-                        <a href="#"><i className="fab fa-facebook"></i></a>
-                        <a href="#"><i className="fab fa-instagram"></i></a>
-                        <a href="#"><i className="fab fa-youtube"></i></a>
+                        <a href="#!" onClick={(e) => e.preventDefault()}><i className="fab fa-twitter"></i></a>
+                        <a href="#!" onClick={(e) => e.preventDefault()}><i className="fab fa-facebook"></i></a>
+                        <a href="#!" onClick={(e) => e.preventDefault()}><i className="fab fa-instagram"></i></a>
+                        <a href="#!" onClick={(e) => e.preventDefault()}><i className="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div>
                     <h3>Legal</h3>
-                    <p><a href="#">Privacy Policy</a></p>
-                    <p><a href="#">Terms of Service</a></p>
+                    <p><a href="#!" onClick={(e) => e.preventDefault()}>Privacy Policy</a></p>
+                    <p><a href="#!" onClick={(e) => e.preventDefault()}>Terms of Service</a></p>
                 </div>
             </div>
         </footer>
