@@ -172,9 +172,7 @@ function App() {
                     <p className="subheadline">
                         Upload your video or paste a link to get professional edits instantly. Powered by advanced AI technology.
                     </p>
-                    <button className="cta-button">
-                        Get Started
-                    </button>
+                    
                     <VideoUpload />
                 </div>
             </div>
