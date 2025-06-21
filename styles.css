@@ -11,16 +11,44 @@
     --secondary: #6B7280;
     --light: #F3F4F6;
     --dark: #1F2937;
+    --gradient: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 body {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     color: var(--dark);
     line-height: 1.6;
 }
 
 section {
     padding: 5rem 2rem;
+    animation: fadeIn 1s ease-out;
 }
 
 .container {
@@ -36,6 +64,16 @@ section {
     justify-content: center;
     padding: 2rem;
     position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
+    animation: float 6s ease-in-out infinite;
 }
 
 .hero-content {
@@ -46,6 +84,12 @@ section {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
+    animation: fadeIn 1s ease-out;
+    transition: transform 0.3s ease;
+}
+
+.hero-content:hover {
+    transform: translateY(-5px);
 }
 
 /* Upload Section */
@@ -54,6 +98,7 @@ section {
     border-radius: 20px;
     padding: 2rem;
     margin-top: 2rem;
+    animation: fadeIn 1s ease-out;
 }
 
 .upload-area {
@@ -63,11 +108,34 @@ section {
     text-align: center;
     margin: 1rem 0;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .upload-area:hover {
     background: var(--light);
+    transform: scale(1.02);
+}
+
+.upload-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.upload-area:hover::before {
+    left: 100%;
 }
 
 .url-input {
@@ -96,11 +164,21 @@ section {
     padding: 2rem;
     border-radius: 10px;
     background: var(--light);
-    transition: transform 0.3s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .feature-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
 }
 
 /* Pricing Section */
@@ -117,6 +195,30 @@ section {
     padding: 2rem;
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.pricing-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gradient);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.pricing-card:hover::after {
+    transform: scaleX(1);
 }
 
 /* Testimonials Section */
@@ -136,6 +238,12 @@ section {
     border-radius: 15px;
     padding: 2rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 .profile-img {
@@ -143,6 +251,13 @@ section {
     height: 60px;
     border-radius: 50%;
     margin-bottom: 1rem;
+    border: 3px solid var(--primary);
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover .profile-img {
+    transform: scale(1.1);
+    border-color: var(--primary-dark);
 }
 
 /* Footer */
@@ -162,6 +277,17 @@ section {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary);
+    transform: translateY(-3px);
 }
 
 /* Common Elements */
@@ -185,19 +311,43 @@ section {
 }
 
 .cta-button {
-    background: var(--primary);
+    background: var(--gradient);
+    background-size: 200% 200%;
     color: white;
     border: none;
     padding: 1rem 2rem;
     font-size: 1.1rem;
     border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.2s, background 0.2s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .cta-button:hover {
-    background: var(--primary-dark);
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
+    animation: pulse 2s infinite;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.cta-button:hover::before {
+    left: 100%;
 }
 
 /* Responsive Design */
