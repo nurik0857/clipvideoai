@@ -87,7 +87,7 @@ function Pricing() {
                                     <li key={i}>{feature}</li>
                                 ))}
                             </ul>
-                            <button className="cta-button">Select Plan</button>
+                            <button className="cta-button" onClick={(e) => e.preventDefault()}>Select Plan</button>
                         </div>
                     ))}
                 </div>
